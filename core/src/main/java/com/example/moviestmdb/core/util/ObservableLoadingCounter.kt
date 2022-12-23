@@ -1,13 +1,8 @@
 package com.example.moviestmdb.core.util
 
-import com.example.moviestmdb.domain.InvokeError
-import com.example.moviestmdb.domain.InvokeStarted
-import com.example.moviestmdb.domain.InvokeStatus
-import com.example.moviestmdb.domain.InvokeSuccess
+import com.example.moviestmdb.core.result.*
 import kotlinx.coroutines.flow.*
-import timber.log.Timber
 import java.util.concurrent.atomic.AtomicInteger
-import  com.example.moviestmdb.core.result.*
 
 class ObservableLoadingCounter {
     private val count = AtomicInteger()

@@ -23,4 +23,16 @@ class TvShowsRepository @Inject constructor(
     }
 
     fun observeTopRatedTvShows() = local.topRatedTvShowsStore.observeEnteries()
+
+
+    suspend fun getPopularTvShows(page: Int) =
+        flow {
+            emit(remote.getPopular(page))
+        }
+
+    fun savePopularTvShows(page: Int, tvShows: List<TvShow>) {
+        local.popularTvShowsStore.insert(page, tvShows)
+    }
+
+    fun observePopularTvShows() = local.popularTvShowsStore.observeEnteries()
 }

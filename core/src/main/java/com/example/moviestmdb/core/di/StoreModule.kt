@@ -36,4 +36,9 @@ class StoreModule {
     @Provides
     @TopRatedTvShows
     fun provideTopRatedTvShowsStore(): TvShowsStore = TvShowsStore()
+
+    @Singleton
+    @Provides
+    @PopularsTvShows
+    fun providePopularTvShowsStore(): TvShowsStore = TvShowsStore()
 }

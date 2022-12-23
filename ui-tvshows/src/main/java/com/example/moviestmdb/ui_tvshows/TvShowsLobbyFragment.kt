@@ -24,7 +24,6 @@ class TvShowsLobbyFragment : Fragment() {
     @Inject
     lateinit var tmdbImageManager: TmdbImageManager
 
-
     lateinit var binding: FragmentTvShowsLobbyBinding
 
     override fun onCreateView(

@@ -21,25 +21,33 @@ import javax.inject.Inject
 class TvShowsLobbyViewModel @Inject constructor(
 
     private val updateTopRatedTvShows: UpdateTopRatedTvShows,
+    private val updatePopularTvShows: UpdatePopularTvShows,
     observeTopRatedTvShows: ObserveTopRatedTvShows,
+    observePopularTvShows: ObservePopularTvShows,
     private val dispatchers: AppCoroutineDispatchers,
 ) : ViewModel() {
 
+    private val popularLoadingState = ObservableLoadingCounter()
     private val topRatedLoadingState = ObservableLoadingCounter()
     private val uiMessageManager = UiMessageManager()
 
     init {
+        observePopularTvShows(ObservePopularTvShows.Params(1))
         observeTopRatedTvShows(ObserveTopRatedTvShows.Params(1))
         refresh()
     }
 
     val state: StateFlow<LobbyViewState> = combine(
+        popularLoadingState.observable,
         topRatedLoadingState.observable,
+        observePopularTvShows.flow,
         observeTopRatedTvShows.flow,
         uiMessageManager.message,
-    ) { topRatedRefreshing, topRatedTvShows, message ->
+    ) { popularRefreshing, topRatedRefreshing, popularTvShows, topRatedTvShows, message ->
         LobbyViewState(
+            popularRefreshing = popularRefreshing,
             topRatedRefreshing = topRatedRefreshing,
+            popularTvShows = popularTvShows,
             topRatedTvShows = topRatedTvShows,
             message = message
         )
@@ -50,7 +58,7 @@ class TvShowsLobbyViewModel @Inject constructor(
     )
 
 
-   private fun refresh() {
+    private fun refresh() {
         viewModelScope.launch(dispatchers.io) {
             updateTopRatedTvShows(UpdateTopRatedTvShows.Params(UpdateTopRatedTvShows.Page.REFRESH))
                 .collectStatus(

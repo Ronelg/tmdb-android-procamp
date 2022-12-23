@@ -11,4 +11,9 @@ interface TvShowsService {
     fun getTopRated(
         @Query("page") page: Int
     ): Call<TvShowResponse>
+
+    @GET("tv/popular")
+    fun getPopular(
+        @Query("page") page: Int
+    ): Call<TvShowResponse>
 }

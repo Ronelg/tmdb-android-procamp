@@ -22,4 +22,13 @@ class TvShowsRemoteDataSource @Inject constructor(
         }
     }
 
+    suspend fun getPopular(page: Int): Result<TvShowResponse> {
+        return safeApiCall {
+            tvShowsService
+                .getPopular(page)
+                .executeWithRetry()
+                .toResult()
+        }
+    }
+
 }

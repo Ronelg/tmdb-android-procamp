@@ -21,6 +21,11 @@ annotation class TopRatedTvShows
 @Retention(AnnotationRetention.RUNTIME)
 @Qualifier
 @MustBeDocumented
+annotation class PopularsTvShows
+
+@Retention(AnnotationRetention.RUNTIME)
+@Qualifier
+@MustBeDocumented
 annotation class UpcomingMovies
 
 @Retention(AnnotationRetention.RUNTIME)

@@ -3,7 +3,7 @@ package com.example.moviestmdb.domain.interactors
 import com.example.moviestmdb.MovieResponse
 import com.example.moviestmdb.core.data.movies.MoviesRepository
 import com.example.moviestmdb.core.data.movies.MoviesStore
-import com.example.moviestmdb.core.di.Upcoming
+import com.example.moviestmdb.core.di.UpcomingMovies
 import com.example.moviestmdb.core.result.Result
 import com.example.moviestmdb.core.util.AppCoroutineDispatchers
 import com.example.moviestmdb.domain.FlowInteractor
@@ -14,7 +14,7 @@ import javax.inject.Inject
 
 class UpdateUpcomingMovies @Inject constructor(
     private val moviesRepository: MoviesRepository,
-    @Upcoming val upcomingStore: MoviesStore,
+    @UpcomingMovies val upcomingMoviesStore: MoviesStore,
     private val dispatchers: AppCoroutineDispatchers,
 ) : FlowInteractor<UpdateUpcomingMovies.Params, MovieResponse>(dispatchers.io) {
 
@@ -22,7 +22,7 @@ class UpdateUpcomingMovies @Inject constructor(
         val page = when {
             params.page >= 1 -> params.page
             params.page == Page.NEXT_PAGE -> {
-                val lastPage = upcomingStore.getLastPage()
+                val lastPage = upcomingMoviesStore.getLastPage()
                 lastPage + 1
             }
             else -> 1

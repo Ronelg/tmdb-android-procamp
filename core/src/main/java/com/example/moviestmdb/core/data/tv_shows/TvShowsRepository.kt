@@ -1,8 +1,5 @@
 package com.example.moviestmdb.core.data.tv_shows
 
-import com.example.moviestmdb.Cast
-import com.example.moviestmdb.Genere
-import com.example.moviestmdb.Movie
 import com.example.moviestmdb.TvShow
 import com.example.moviestmdb.core.data.tv_shows.datasources.TvShowsLocalDataSource
 import com.example.moviestmdb.core.data.tv_shows.datasources.TvShowsRemoteDataSource
@@ -22,8 +19,8 @@ class TvShowsRepository @Inject constructor(
         }
 
     fun saveTopRatedTvShows(page: Int, tvShows: List<TvShow>) {
-        local.topRatedStore.insert(page, tvShows)
+        local.topRatedTvShowsStore.insert(page, tvShows)
     }
 
-    fun observeTopRatedTvShows() = local.topRatedStore.observeEnteries()
+    fun observeTopRatedTvShows() = local.topRatedTvShowsStore.observeEnteries()
 }

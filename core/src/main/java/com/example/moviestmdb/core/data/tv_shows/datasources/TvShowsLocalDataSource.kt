@@ -1,22 +1,15 @@
 package com.example.moviestmdb.core.data.tv_shows.datasources
 
 import com.example.moviestmdb.Genere
-import com.example.moviestmdb.core.data.movies.CastsStore
-import com.example.moviestmdb.core.data.movies.MoviesStore
-import com.example.moviestmdb.core.data.movies.RecommendationsStore
 import com.example.moviestmdb.core.data.tv_shows.TvShowsStore
-import com.example.moviestmdb.core.di.NowPlaying
-import com.example.moviestmdb.core.di.Popular
-import com.example.moviestmdb.core.di.TopRated
-import com.example.moviestmdb.core.di.Upcoming
-import kotlinx.coroutines.flow.Flow
+import com.example.moviestmdb.core.di.TopRatedTvShows
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import javax.inject.Inject
 
 class TvShowsLocalDataSource @Inject constructor(
-    @TopRated val topRatedStore: TvShowsStore,
+    @TopRatedTvShows val topRatedTvShowsStore: TvShowsStore,
 ) {
 
     private val _generes = MutableSharedFlow<List<Genere>>(replay = 1).apply {

@@ -6,22 +6,27 @@ import javax.inject.Qualifier
 @Retention(AnnotationRetention.RUNTIME)
 @Qualifier
 @MustBeDocumented
-annotation class Popular
+annotation class PopularMovies
 
 @Retention(AnnotationRetention.RUNTIME)
 @Qualifier
 @MustBeDocumented
-annotation class TopRated
+annotation class TopRatedMovies
 
 @Retention(AnnotationRetention.RUNTIME)
 @Qualifier
 @MustBeDocumented
-annotation class Upcoming
+annotation class TopRatedTvShows
 
 @Retention(AnnotationRetention.RUNTIME)
 @Qualifier
 @MustBeDocumented
-annotation class NowPlaying
+annotation class UpcomingMovies
+
+@Retention(AnnotationRetention.RUNTIME)
+@Qualifier
+@MustBeDocumented
+annotation class NowPlayingMovies
 
 @Retention(AnnotationRetention.RUNTIME)
 @Qualifier

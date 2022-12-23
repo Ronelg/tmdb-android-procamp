@@ -3,7 +3,7 @@ package com.example.moviestmdb.domain.observers
 import androidx.paging.*
 import com.example.moviestmdb.Movie
 import com.example.moviestmdb.core.data.movies.MoviesStore
-import com.example.moviestmdb.core.di.Popular
+import com.example.moviestmdb.core.di.PopularMovies
 import com.example.moviestmdb.domain.MoviesPagingSource
 import com.example.moviestmdb.domain.PaginatedMovieRemoteMediator
 import com.example.moviestmdb.domain.PagingInteractor
@@ -13,7 +13,7 @@ import javax.inject.Inject
 
 @OptIn(ExperimentalPagingApi::class)
 class ObservePagedPopularMovies @Inject constructor(
-    @Popular private val popularStore: MoviesStore,
+    @PopularMovies private val popularMoviesStore: MoviesStore,
     private val updatePopularMovies: UpdatePopularMovies,
 ) : PagingInteractor<ObservePagedPopularMovies.Params, Movie>() {
     override fun createObservable(
@@ -21,7 +21,7 @@ class ObservePagedPopularMovies @Inject constructor(
     ): Flow<PagingData<Movie>> {
         return Pager(
             config = params.pagingConfig,
-            remoteMediator = PaginatedMovieRemoteMediator(moviesStore = popularStore) { page ->
+            remoteMediator = PaginatedMovieRemoteMediator(moviesStore = popularMoviesStore) { page ->
                 updatePopularMovies.executeSync(UpdatePopularMovies.Params(page))
                 pagingSourceFactory.invalidate()
             },
@@ -32,7 +32,7 @@ class ObservePagedPopularMovies @Inject constructor(
     private val pagingSourceFactory = InvalidatingPagingSourceFactory(::createPagingSource)
 
     private fun createPagingSource(): MoviesPagingSource {
-        return MoviesPagingSource(popularStore)
+        return MoviesPagingSource(popularMoviesStore)
     }
 
     data class Params(

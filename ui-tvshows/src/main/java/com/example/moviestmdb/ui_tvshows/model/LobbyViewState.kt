@@ -1,4 +1,4 @@
-package com.example.moviestmdb.ui_tvshows
+package com.example.moviestmdb.ui_tvshows.model
 
 import com.example.moviestmdb.TvShow
 import com.example.moviestmdb.core.util.UiMessage

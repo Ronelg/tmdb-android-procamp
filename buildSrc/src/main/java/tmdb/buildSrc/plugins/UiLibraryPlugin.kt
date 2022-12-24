@@ -66,6 +66,7 @@ class UiLibraryPlugin : Plugin<Project> {
 
     private fun Project.dependenciesConfig() {
         dependencies {
+            "implementation"(Libs.AndroidX.appcompat)
             "implementation"(Libs.AndroidX.coreKtx)
             "implementation"(Libs.Google.material)
             "implementation"(Libs.Google.flexbox)
@@ -87,8 +88,6 @@ class UiLibraryPlugin : Plugin<Project> {
 
             val composeBom = platform("androidx.compose:compose-bom:2022.12.00")
             "implementation" (composeBom)
-
-
 
             "implementation"("androidx.compose.material3:material3")
             // or Material Design 2
@@ -117,6 +116,9 @@ class UiLibraryPlugin : Plugin<Project> {
             "implementation"("androidx.activity:activity-compose:1.5.1")
             // Optional - Integration with ViewModels
             "implementation"("androidx.lifecycle:lifecycle-viewmodel-compose:2.5.1")
+
+            //coil
+            "implementation"( "io.coil-kt:coil-compose:2.1.0")
         }
     }
 }

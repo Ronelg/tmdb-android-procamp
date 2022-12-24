@@ -8,6 +8,7 @@ import com.example.moviestmdb.core.util.UiMessageManager
 import com.example.moviestmdb.core.util.collectStatus
 import com.example.moviestmdb.domain.interactors.*
 import com.example.moviestmdb.domain.observers.*
+import com.example.moviestmdb.ui_tvshows.model.LobbyViewState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -63,6 +64,14 @@ class TvShowsLobbyViewModel @Inject constructor(
             updateTopRatedTvShows(UpdateTopRatedTvShows.Params(UpdateTopRatedTvShows.Page.REFRESH))
                 .collectStatus(
                     topRatedLoadingState,
+                    uiMessageManager
+                )
+        }
+
+        viewModelScope.launch(dispatchers.io) {
+            updatePopularTvShows(UpdatePopularTvShows.Params(UpdatePopularTvShows.Page.REFRESH))
+                .collectStatus(
+                    popularLoadingState,
                     uiMessageManager
                 )
         }

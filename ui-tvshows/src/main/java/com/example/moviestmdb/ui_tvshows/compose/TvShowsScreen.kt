@@ -1,16 +1,17 @@
 package com.example.moviestmdb.ui_tvshows.compose
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Menu
-import androidx.compose.material3.*
+import androidx.compose.material.Scaffold
+import androidx.compose.material.Text
+import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.example.moviestmdb.ui_tvshows.ListTitle
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
 import com.example.moviestmdb.ui_tvshows.model.LobbyViewState
 import com.example.moviestmdb.util.TmdbImageUrlProvider
 
-@OptIn(ExperimentalMaterial3Api::class)
+
 @Composable
 fun TvShowsScreen(
     modifier: Modifier = Modifier,
@@ -18,31 +19,29 @@ fun TvShowsScreen(
     tmdbImageUrlProvider: TmdbImageUrlProvider,
     onTileClicked: (movieId: Int) -> Unit
 ) {
-    Column {
-        TopAppBar(
-            title = { Text(text = "Tv Shows") },
-            navigationIcon = {
-                IconButton(onClick = { }) {
-                    Icon(
-                        tint = MaterialTheme.colorScheme.onPrimary,
-                        imageVector = Icons.Filled.Menu,
-                        contentDescription = "Tv Shows"
-                    )
-                }
-            })
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                backgroundColor = Color.White,
+                title = { Text(text = "TV Shows") },
+            )
+        },
+        content = {
+            Column(Modifier.padding(horizontal = 16.dp)) {
+                ListTitle("Populars")
+                HorizontalListView(
+                    tmdbImageUrlProvider = tmdbImageUrlProvider,
+                    items = state.popularTvShows,
+                    onTileClicked = onTileClicked
+                )
 
-        ListTitle("Populars")
-        HorizontalListView(
-            tmdbImageUrlProvider = tmdbImageUrlProvider,
-            items = state.popularTvShows,
-            onTileClicked = onTileClicked
-        )
-
-        ListTitle("Top Rated")
-        HorizontalListView(
-            tmdbImageUrlProvider = tmdbImageUrlProvider,
-            items = state.topRatedTvShows,
-            onTileClicked = onTileClicked
-        )
-    }
+                ListTitle("Top Rated")
+                HorizontalListView(
+                    tmdbImageUrlProvider = tmdbImageUrlProvider,
+                    items = state.topRatedTvShows,
+                    onTileClicked = onTileClicked
+                )
+            }
+        }
+    )
 }

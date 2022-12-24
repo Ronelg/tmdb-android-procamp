@@ -89,7 +89,7 @@ class UiLibraryPlugin : Plugin<Project> {
             val composeBom = platform("androidx.compose:compose-bom:2022.12.00")
             "implementation" (composeBom)
 
-            "implementation"("androidx.compose.material3:material3")
+//            "implementation"("androidx.compose.material3:material3")
             // or Material Design 2
             "implementation"("androidx.compose.material:material")
             // or skip Material Design and build directly on top of foundational components

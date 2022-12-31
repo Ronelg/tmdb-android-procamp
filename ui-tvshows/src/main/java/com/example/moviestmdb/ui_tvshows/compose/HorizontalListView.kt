@@ -1,8 +1,6 @@
 package com.example.moviestmdb.ui_tvshows.compose
 
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
@@ -19,13 +17,17 @@ fun HorizontalListView(
     onTileClicked: (tvShowId: Int) -> Unit
 ) {
     Box(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
-            .height(170.dp)
+            .wrapContentHeight()
     ) {
         LazyRow {
             items(items = items) {
-                TileView(tmdbImageUrlProvider,it, onTileClicked)
+                TileView(
+                    modifier.padding(end = 8.dp),
+                    tmdbImageUrlProvider = tmdbImageUrlProvider,
+                    tvShow = it,
+                    onClick = onTileClicked)
             }
         }
     }

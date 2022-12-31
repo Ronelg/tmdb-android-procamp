@@ -9,8 +9,8 @@ data class TvShow (
     val isAdult : Boolean = false,
     @SerializedName("overview")
     val overView : String = "",
-    @SerializedName("release_date")
-    val releaseDate : String? = null,
+    @SerializedName("first_air_date")
+    val firstAirDate : String? = null,
     @SerializedName("genre_ids")
     val genreList: List<Int> = listOf(),
     @SerializedName("id")
@@ -19,8 +19,8 @@ data class TvShow (
     val originalTitle : String? = null,
     @SerializedName("original_language")
     val originalLanguage : String? = null,
-    @SerializedName("title")
-    val title : String? = null,
+    @SerializedName("name")
+    val name : String? = null,
     @SerializedName("backdrop_path")
     val backdropPath : String? = null,
     @SerializedName("popularity")

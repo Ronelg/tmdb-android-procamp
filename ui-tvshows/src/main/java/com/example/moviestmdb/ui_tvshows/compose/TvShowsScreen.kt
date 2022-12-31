@@ -1,6 +1,10 @@
 package com.example.moviestmdb.ui_tvshows.compose
 
+import androidx.compose.foundation.gestures.Orientation
+import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
@@ -19,6 +23,8 @@ fun TvShowsScreen(
     tmdbImageUrlProvider: TmdbImageUrlProvider,
     onTileClicked: (movieId: Int) -> Unit
 ) {
+    val scrollState = rememberScrollState()
+
     Scaffold(
         topBar = {
             TopAppBar(
@@ -27,20 +33,29 @@ fun TvShowsScreen(
             )
         },
         content = {
-            Column(Modifier.padding(horizontal = 16.dp)) {
+            Column(
+                modifier = modifier
+                    .padding(horizontal = 16.dp)
+                    .fillMaxHeight()
+                    .verticalScroll(rememberScrollState())
+            ) {
+                Spacer(modifier = Modifier.height(16.dp))
                 ListTitle("Populars")
+                Spacer(modifier = Modifier.height(16.dp))
                 HorizontalListView(
                     tmdbImageUrlProvider = tmdbImageUrlProvider,
                     items = state.popularTvShows,
                     onTileClicked = onTileClicked
                 )
-
+                Spacer(modifier = Modifier.height(16.dp))
                 ListTitle("Top Rated")
+                Spacer(modifier = Modifier.height(16.dp))
                 HorizontalListView(
                     tmdbImageUrlProvider = tmdbImageUrlProvider,
                     items = state.topRatedTvShows,
                     onTileClicked = onTileClicked
                 )
+                Spacer(modifier = Modifier.height(16.dp))
             }
         }
     )

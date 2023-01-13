@@ -24,12 +24,11 @@ fun TvShowsScreen(
     tmdbImageUrlProvider: TmdbImageUrlProvider,
     onTileClicked: (movieId: Int) -> Unit
 ) {
-
     Scaffold(
         topBar = {
             TopAppBar(
-                backgroundColor = MaterialTheme.extendedColors.onTertiary,
-                title = { Text(text = "Lobby") },
+                backgroundColor = MaterialTheme.colors.surface, //Same as "Widget.Tmdb.AppBar" style define
+                title = { Text(text = "TV Shows",style= MaterialTheme.typography.h6) },
             )
         },
         content = {
@@ -40,7 +39,7 @@ fun TvShowsScreen(
                     .verticalScroll(rememberScrollState())
             ) {
                 Spacer(modifier = Modifier.height(16.dp))
-                ListTitle("Populars")
+                ListTitle("Popular TV Shows")
                 Spacer(modifier = Modifier.height(16.dp))
                 HorizontalListView(
                     tmdbImageUrlProvider = tmdbImageUrlProvider,
@@ -48,7 +47,7 @@ fun TvShowsScreen(
                     onTileClicked = onTileClicked
                 )
                 Spacer(modifier = Modifier.height(16.dp))
-                ListTitle("Top Rated")
+                ListTitle("Top Rated TV Shows")
                 Spacer(modifier = Modifier.height(16.dp))
                 HorizontalListView(
                     tmdbImageUrlProvider = tmdbImageUrlProvider,

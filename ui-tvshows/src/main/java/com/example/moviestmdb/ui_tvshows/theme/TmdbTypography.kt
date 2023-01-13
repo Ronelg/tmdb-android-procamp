@@ -28,30 +28,42 @@ val WorkSans = FontFamily(
 val MaterialTypography = Typography(
     h2 = TextStyle(
         fontFamily = WorkSans,
-        fontWeight = FontWeight.W600
+        fontWeight = FontWeight.W600,
+        fontSize = 60.sp,
+        letterSpacing = (-0.5).sp
     ),
     h3 = TextStyle(
         fontFamily = WorkSans,
-        fontWeight = FontWeight.Bold
+        fontWeight = FontWeight.Bold,
+        fontSize = 48.sp,
+        letterSpacing = 0.sp
     ),
     h4 = TextStyle(
         fontFamily = WorkSans,
-        fontWeight = FontWeight.Bold
+        fontWeight = FontWeight.Bold,
+        fontSize = 34.sp,
+        letterSpacing = 0.25.sp
     ),
     h5 = TextStyle(
         fontFamily = WorkSans,
-        fontWeight = FontWeight.Bold
+        fontWeight = FontWeight.Bold,
+        fontSize = 24.sp,
+        letterSpacing = 0.sp
     ),
     h6 = TextStyle(
         fontFamily = WorkSans,
-        fontWeight = FontWeight.W500
+        fontWeight = FontWeight.W500,
+        fontSize = 20.sp,
+        letterSpacing = 0.15.sp
     ),
     body1 = TextStyle(
         fontFamily = WorkSans,
-        fontSize = 14.sp
+        fontSize = 14.sp,
+        letterSpacing = 0.5.sp
     ),
     body2 = TextStyle(
         fontFamily = WorkSans,
-        fontSize = 16.sp
+        fontSize = 16.sp,
+        letterSpacing = 0.25.sp
     )
 )

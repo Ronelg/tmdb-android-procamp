@@ -89,33 +89,37 @@ class UiLibraryPlugin : Plugin<Project> {
             val composeBom = platform("androidx.compose:compose-bom:2022.12.00")
             "implementation" (composeBom)
 
-//            "implementation"("androidx.compose.material3:material3")
-            // or Material Design 2
-            "implementation"("androidx.compose.material:material")
+            // Material Design 3
+            //"implementation"("androidx.compose.material3:material3")
+            // Material Design 2
+           "implementation"("androidx.compose.material:material")
+
+            // Downloadable fonts
+            "implementation"("androidx.compose.ui:ui-text-google-fonts:1.3.2")
+
             // or skip Material Design and build directly on top of foundational components
-            "implementation"("androidx.compose.foundation:foundation")
+           // "implementation"("androidx.compose.foundation:foundation")
             // or only import the main APIs for the underlying toolkit systems,
             // such as input and measurement/layout
-            "implementation"("androidx.compose.ui:ui")
+           // "implementation"("androidx.compose.ui:ui")
 
             // Android Studio Preview support
             "implementation"("androidx.compose.ui:ui-tooling-preview")
             "debugImplementation"("androidx.compose.ui:ui-tooling")
 
-
             // Optional - Included automatically by material, only add when you need
             // the icons but not the material library (e.g. when using Material3 or a
             // custom design system based on Foundation)
-            "implementation"("androidx.compose.material:material-icons-core")
+//            "implementation"("androidx.compose.material:material-icons-core")
             // Optional - Add full set of material icons
-            "implementation"("androidx.compose.material:material-icons-extended")
+//            "implementation"("androidx.compose.material:material-icons-extended")
             // Optional - Add window size utils
-            "implementation"("androidx.compose.material3:material3-window-size-class")
+ //           "implementation"("androidx.compose.material3:material3-window-size-class")
 
-            // Optional - Integration with activities
-            "implementation"("androidx.activity:activity-compose:1.5.1")
-            // Optional - Integration with ViewModels
-            "implementation"("androidx.lifecycle:lifecycle-viewmodel-compose:2.5.1")
+//            // Optional - Integration with activities
+//            "implementation"("androidx.activity:activity-compose:1.5.1")
+//            // Optional - Integration with ViewModels
+//            "implementation"("androidx.lifecycle:lifecycle-viewmodel-compose:2.5.1")
 
             //coil
             "implementation"( "io.coil-kt:coil-compose:2.1.0")

@@ -26,13 +26,13 @@ fun TileView(
     onClick: (tvShowId: Int) -> Unit
 ) {
     Card(
+        elevation = 4.dp,
         modifier = modifier
             .height(280.dp)
             .width(150.dp)
             .clickable {
                 onClick(tvShow.id)
             },
-        elevation = 4.dp,
         shape = RoundedCornerShape(8.dp)
     ) {
         Column {

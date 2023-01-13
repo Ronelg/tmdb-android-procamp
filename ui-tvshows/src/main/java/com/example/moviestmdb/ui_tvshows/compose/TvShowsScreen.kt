@@ -1,10 +1,9 @@
 package com.example.moviestmdb.ui_tvshows.compose
 
-import androidx.compose.foundation.gestures.Orientation
-import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
@@ -13,6 +12,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.example.moviestmdb.ui_tvshows.model.LobbyViewState
+import com.example.moviestmdb.ui_tvshows.theme.TmdbTheme
+import com.example.moviestmdb.ui_tvshows.theme.extendedColors
 import com.example.moviestmdb.util.TmdbImageUrlProvider
 
 
@@ -23,13 +24,12 @@ fun TvShowsScreen(
     tmdbImageUrlProvider: TmdbImageUrlProvider,
     onTileClicked: (movieId: Int) -> Unit
 ) {
-    val scrollState = rememberScrollState()
 
     Scaffold(
         topBar = {
             TopAppBar(
-                backgroundColor = Color.White,
-                title = { Text(text = "TV Shows") },
+                backgroundColor = MaterialTheme.extendedColors.onTertiary,
+                title = { Text(text = "Lobby") },
             )
         },
         content = {

@@ -11,6 +11,7 @@ import com.example.moviestmdb.core.TmdbImageManager
 import com.example.moviestmdb.core.extensions.launchAndRepeatWithViewLifecycle
 import com.example.moviestmdb.ui_tvshows.compose.TvShowsScreen
 import com.example.moviestmdb.ui_tvshows.databinding.FragmentTvShowsLobbyBinding
+import com.example.moviestmdb.ui_tvshows.theme.TmdbTheme
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -39,14 +40,16 @@ class TvShowsLobbyFragment : Fragment() {
             viewModel.state.collect { uiState ->
 
                 binding.composeView.setContent {
-                    TvShowsScreen(
-                        tmdbImageUrlProvider = tmdbImageManager.getLatestImageProvider(),
-                        state = uiState,
-                        onTileClicked = { id ->
-                            val bundle = bundleOf("id" to id)
-                            //findNavController().navigate(R.id.navigation_tv_show_details, bundle)
-                        }
-                    )
+                    TmdbTheme {
+                        TvShowsScreen(
+                            tmdbImageUrlProvider = tmdbImageManager.getLatestImageProvider(),
+                            state = uiState,
+                            onTileClicked = { id ->
+                                val bundle = bundleOf("id" to id)
+                                //findNavController().navigate(R.id.navigation_tv_show_details, bundle)
+                            }
+                        )
+                    }
                 }
 
                 uiState.message?.let { message ->

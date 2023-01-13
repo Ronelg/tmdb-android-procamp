@@ -1,6 +1,9 @@
 package com.example.moviestmdb.ui_tvshows.theme
 
 import androidx.compose.material.Typography
+import androidx.compose.runtime.Immutable
+import androidx.compose.runtime.staticCompositionLocalOf
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.ExperimentalTextApi
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
@@ -65,5 +68,20 @@ val MaterialTypography = Typography(
         fontFamily = WorkSans,
         fontSize = 16.sp,
         letterSpacing = 0.25.sp
+    ),
+    subtitle2 = TextStyle(
+        fontFamily = WorkSans,
+        fontWeight = FontWeight.W500,
+        fontSize = 14.sp,
+        letterSpacing = 0.1.sp
     )
 )
+
+@Immutable
+data class ExtendedTypography(
+    val listItem: TextStyle
+)
+
+val LocalExtendedTypography = staticCompositionLocalOf {
+    ExtendedTypography(listItem = TextStyle.Default)
+}

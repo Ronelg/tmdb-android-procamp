@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.CircularProgressIndicator
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -41,8 +42,8 @@ fun PopularityBadge(
                     .padding(horizontal = 8.dp)
                     .align(Alignment.Center),
                 text = "$popularity%",
-                color = Color.White,
-                fontSize = 10.sp
+                style = MaterialTheme.typography.caption,
+                color = Color.White
             )
         }
     }

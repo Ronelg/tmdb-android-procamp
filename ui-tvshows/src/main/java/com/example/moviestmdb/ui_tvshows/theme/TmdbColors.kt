@@ -2,6 +2,8 @@ package com.example.moviestmdb.ui_tvshows.theme
 
 import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
+import androidx.compose.runtime.Immutable
+import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
 
 // LIGHT colors
@@ -75,3 +77,16 @@ internal val MaterialDarkColors = darkColors(
     onSurface = tmdb_black_900,
     onError = tmdb_black_900
 )
+
+@Immutable
+data class ExtendedColors(
+    val tertiary: Color,
+    val onTertiary: Color
+)
+
+val LocalExtendedColors = staticCompositionLocalOf {
+    ExtendedColors(
+        tertiary = Color.Unspecified,
+        onTertiary = Color.Unspecified
+    )
+}

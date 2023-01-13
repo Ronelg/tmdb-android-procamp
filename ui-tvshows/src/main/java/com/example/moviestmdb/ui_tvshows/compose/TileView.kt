@@ -5,6 +5,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -16,6 +17,7 @@ import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
 import coil.size.Size
 import com.example.moviestmdb.TvShow
+import com.example.moviestmdb.ui_tvshows.theme.extendedTypography
 import com.example.moviestmdb.util.TmdbImageUrlProvider
 
 @Composable
@@ -57,17 +59,25 @@ fun TileView(
             }
             Spacer(modifier = Modifier.height(26.dp))
             tvShow.name?.let {
-                Text(modifier = Modifier.padding(horizontal = 8.dp), text = it)
+                Text(
+                    modifier = Modifier.padding(horizontal = 16.dp),
+                    text = it,
+                    style = MaterialTheme.extendedTypography.listItem
+                )
             }
-            Spacer(modifier = Modifier.height(8.dp))
+            Spacer(modifier = Modifier.height(4.dp))
             tvShow.firstAirDate?.let {
-                Text(modifier = Modifier.padding(horizontal = 8.dp), text = it)
+                Text(
+                    modifier = Modifier.padding(horizontal = 16.dp),
+                    text = it,
+                    style = MaterialTheme.typography.subtitle2
+                )
             }
             Spacer(modifier = Modifier.height(8.dp))
         }
         Box(
             contentAlignment = Alignment.BottomStart,
-            modifier = Modifier.padding(bottom = 60.dp, start = 8.dp)
+            modifier = Modifier.padding(bottom = 54.dp, start = 8.dp)
         ) {
             PopularityBadge(
                 popularity = tvShow.popularityPrecentage,

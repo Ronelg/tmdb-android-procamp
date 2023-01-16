@@ -1,5 +1,6 @@
 package com.example.moviestmdb.ui_tvshows.compose
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -17,6 +18,7 @@ import com.example.moviestmdb.ui_tvshows.theme.extendedColors
 import com.example.moviestmdb.util.TmdbImageUrlProvider
 
 
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun TvShowsScreen(
     modifier: Modifier = Modifier,

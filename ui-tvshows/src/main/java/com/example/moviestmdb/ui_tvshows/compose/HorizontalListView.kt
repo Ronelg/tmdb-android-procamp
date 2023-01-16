@@ -16,19 +16,18 @@ fun HorizontalListView(
     tmdbImageUrlProvider: TmdbImageUrlProvider,
     onTileClicked: (tvShowId: Int) -> Unit
 ) {
-    Box(
+    LazyRow(
         modifier = modifier
             .fillMaxWidth()
             .wrapContentHeight()
     ) {
-        LazyRow {
-            items(items = items) {
-                TileView(
-                    modifier.padding(end = 8.dp),
-                    tmdbImageUrlProvider = tmdbImageUrlProvider,
-                    tvShow = it,
-                    onClick = onTileClicked)
-            }
+        items(items = items) {
+            TileView(
+                modifier.padding(end = 8.dp),
+                tmdbImageUrlProvider = tmdbImageUrlProvider,
+                tvShow = it,
+                onClick = onTileClicked
+            )
         }
     }
 }

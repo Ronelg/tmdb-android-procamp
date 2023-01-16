@@ -12,6 +12,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
@@ -60,6 +61,8 @@ fun TileView(
             Spacer(modifier = Modifier.height(26.dp))
             tvShow.name?.let {
                 Text(
+                    overflow = TextOverflow.Ellipsis,
+                    maxLines = 1,
                     modifier = Modifier.padding(horizontal = 16.dp),
                     text = it,
                     style = MaterialTheme.extendedTypography.listItem

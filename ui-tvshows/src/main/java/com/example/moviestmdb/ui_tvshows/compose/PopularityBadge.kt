@@ -22,30 +22,28 @@ fun PopularityBadge(
     modifier: Modifier = Modifier,
     popularity: Int
 ) {
-    Column {
-        Box(
-            modifier = modifier
-                .size(50.dp)
-                .aspectRatio(1f)
-                .background(colorResource(color.tmdb_popularity_bg), shape = CircleShape),
-        ) {
-            CircularProgressIndicator(
-                progress = popularity / 100f,
-                modifier = Modifier
-                    .size(size = 40.dp)
-                    .align(Alignment.Center),
-                color = colorResource(updateProgressColor(popularity)),
-                strokeWidth = 2.dp
-            )
-            Text(
-                modifier = Modifier
-                    .padding(horizontal = 8.dp)
-                    .align(Alignment.Center),
-                text = "$popularity%",
-                style = MaterialTheme.typography.caption,
-                color = Color.White
-            )
-        }
+    Box(
+        modifier = modifier
+            .size(50.dp)
+            .aspectRatio(1f)
+            .background(colorResource(color.tmdb_popularity_bg), shape = CircleShape),
+    ) {
+        CircularProgressIndicator(
+            progress = popularity / 100f,
+            modifier = Modifier
+                .size(size = 40.dp)
+                .align(Alignment.Center),
+            color = colorResource(updateProgressColor(popularity)),
+            strokeWidth = 2.dp
+        )
+        Text(
+            modifier = Modifier
+                .padding(horizontal = 8.dp)
+                .align(Alignment.Center),
+            text = "$popularity%",
+            style = MaterialTheme.typography.caption,
+            color = Color.White
+        )
     }
 }
 

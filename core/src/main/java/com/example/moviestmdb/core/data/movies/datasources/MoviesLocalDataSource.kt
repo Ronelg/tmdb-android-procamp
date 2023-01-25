@@ -4,21 +4,20 @@ import com.example.moviestmdb.Genere
 import com.example.moviestmdb.core.data.movies.CastsStore
 import com.example.moviestmdb.core.data.movies.MoviesStore
 import com.example.moviestmdb.core.data.movies.RecommendationsStore
-import com.example.moviestmdb.core.di.NowPlaying
-import com.example.moviestmdb.core.di.Popular
-import com.example.moviestmdb.core.di.TopRated
-import com.example.moviestmdb.core.di.Upcoming
-import kotlinx.coroutines.flow.Flow
+import com.example.moviestmdb.core.di.NowPlayingMovies
+import com.example.moviestmdb.core.di.PopularMovies
+import com.example.moviestmdb.core.di.TopRatedMovies
+import com.example.moviestmdb.core.di.UpcomingMovies
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import javax.inject.Inject
 
 class MoviesLocalDataSource @Inject constructor(
-    @Popular val popularStore: MoviesStore,
-    @TopRated val topRatedStore: MoviesStore,
-    @Upcoming val upcomingStore: MoviesStore,
-    @NowPlaying val nowPlayingStore: MoviesStore,
+    @PopularMovies val popularMoviesStore: MoviesStore,
+    @TopRatedMovies val topRatedMoviesStore: MoviesStore,
+    @UpcomingMovies val upcomingMoviesStore: MoviesStore,
+    @NowPlayingMovies val nowPlayingMoviesStore: MoviesStore,
     val recommendationsStore: RecommendationsStore,
     val castsStore: CastsStore
 ) {

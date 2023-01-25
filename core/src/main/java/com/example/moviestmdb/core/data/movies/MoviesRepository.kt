@@ -2,12 +2,10 @@ package com.example.moviestmdb.core.data.movies
 
 import com.example.moviestmdb.Cast
 import com.example.moviestmdb.Genere
-import com.example.moviestmdb.GenereResponse
 import com.example.moviestmdb.Movie
 import com.example.moviestmdb.core.data.movies.datasources.FirebaseDatabaseDataSource
 import com.example.moviestmdb.core.data.movies.datasources.MoviesLocalDataSource
 import com.example.moviestmdb.core.data.movies.datasources.MoviesRemoteDataSource
-import com.example.moviestmdb.core.result.Result
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -25,10 +23,10 @@ class MoviesRepository @Inject constructor(
         }
 
     fun savePopularMovies(page: Int, movies: List<Movie>) {
-        local.popularStore.insert(page, movies)
+        local.popularMoviesStore.insert(page, movies)
     }
 
-    fun observePopularMovies() = local.popularStore.observeEnteries()
+    fun observePopularMovies() = local.popularMoviesStore.observeEnteries()
 
     suspend fun getNowPlayingMovies(page: Int) =
         flow {
@@ -36,10 +34,10 @@ class MoviesRepository @Inject constructor(
         }
 
     fun saveNowPlayingMovies(page: Int, movies: List<Movie>) {
-        local.nowPlayingStore.insert(page, movies)
+        local.nowPlayingMoviesStore.insert(page, movies)
     }
 
-    fun observeNowPlayingMovies() = local.nowPlayingStore.observeEnteries()
+    fun observeNowPlayingMovies() = local.nowPlayingMoviesStore.observeEnteries()
 
     suspend fun getTopRatedMovies(page: Int) =
         flow {
@@ -47,10 +45,10 @@ class MoviesRepository @Inject constructor(
         }
 
     fun saveTopRatedMovies(page: Int, movies: List<Movie>) {
-        local.topRatedStore.insert(page, movies)
+        local.topRatedMoviesStore.insert(page, movies)
     }
 
-    fun observeTopRatedMovies() = local.topRatedStore.observeEnteries()
+    fun observeTopRatedMovies() = local.topRatedMoviesStore.observeEnteries()
 
     suspend fun getUpcomingMovies(page: Int) =
         flow {
@@ -58,10 +56,10 @@ class MoviesRepository @Inject constructor(
         }
 
     fun saveUpcomingMovies(page: Int, movies: List<Movie>) {
-        local.upcomingStore.insert(page, movies)
+        local.upcomingMoviesStore.insert(page, movies)
     }
 
-    fun observeUpcomingMovies() = local.upcomingStore.observeEnteries()
+    fun observeUpcomingMovies() = local.upcomingMoviesStore.observeEnteries()
 
     suspend fun getMovieCredits(movieId: Int) =
         flow {

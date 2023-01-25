@@ -1,9 +1,9 @@
 package com.example.moviestmdb.domain.interactors
 
-import com.example.moviestmdb.MovieResponse
-import com.example.moviestmdb.core.data.movies.MoviesRepository
-import com.example.moviestmdb.core.data.movies.MoviesStore
-import com.example.moviestmdb.core.di.NowPlayingMovies
+import com.example.moviestmdb.TvShowResponse
+import com.example.moviestmdb.core.data.tv_shows.TvShowsRepository
+import com.example.moviestmdb.core.data.tv_shows.TvShowsStore
+import com.example.moviestmdb.core.di.TopRatedTvShows
 import com.example.moviestmdb.core.result.Result
 import com.example.moviestmdb.core.util.AppCoroutineDispatchers
 import com.example.moviestmdb.domain.FlowInteractor
@@ -12,29 +12,29 @@ import kotlinx.coroutines.flow.onEach
 import timber.log.Timber
 import javax.inject.Inject
 
-class UpdateNowPlayingMovies @Inject constructor(
-    private val moviesRepository: MoviesRepository,
-    @NowPlayingMovies val nowPlayingMoviesStore: MoviesStore,
+class UpdateTopRatedTvShows @Inject constructor(
+    private val tvShowsRepository: TvShowsRepository,
+    @TopRatedTvShows val topRatedTvShowsStore: TvShowsStore,
     private val dispatchers: AppCoroutineDispatchers,
-) : FlowInteractor<UpdateNowPlayingMovies.Params, MovieResponse>(dispatchers.io) {
+) : FlowInteractor<UpdateTopRatedTvShows.Params, TvShowResponse>(dispatchers.io) {
 
-    override suspend fun doWork(params: Params): Flow<Result<MovieResponse>> {
+    override suspend fun doWork(params: Params): Flow<Result<TvShowResponse>> {
         val page = when {
             params.page >= 1 -> params.page
             params.page == Page.NEXT_PAGE -> {
-                val lastPage = nowPlayingMoviesStore.getLastPage()
+                val lastPage = topRatedTvShowsStore.getLastPage()
                 lastPage + 1
             }
             else -> 1
         }
 
-        return moviesRepository.getNowPlayingMovies(page)
+        return tvShowsRepository.getTopRatedTvShows(page)
             .onEach { result ->
                 when (result) {
                     is Result.Error -> Timber.e(result.exception)
-                    is Result.Success -> moviesRepository.saveNowPlayingMovies(
+                    is Result.Success -> tvShowsRepository.saveTopRatedTvShows(
                         result.data.page,
-                        result.data.movieList
+                        result.data.tvShowList
                     )
                 }
             }

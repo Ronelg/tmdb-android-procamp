@@ -2,7 +2,7 @@
     <style name="Theme.Tmdb" parent="Base.Theme.Tmdb" />
 
     <style name="Base.Theme.Tmdb" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <!--Color-->
+<!--        &lt;!&ndash;Color&ndash;&gt;-->
         <item name="colorPrimary">@color/tmdb_blue_700</item>
         <item name="colorPrimaryVariant">@color/tmdb_blue_800</item>
         <item name="colorSecondary">@color/tmdb_orange_500</item>

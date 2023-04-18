@@ -112,6 +112,7 @@ class MoviesLobbyFragment : Fragment() {
         binding.popularMoviesView.title.text = "Popular Movies"
         binding.popularMoviesView.more.setOnClickListener {
             findNavController().navigate(R.id.navigation_popular_movies_fragment)
+//            findNavController().navigate(R.id.navigation_popular_movies_fragment2)
         }
     }
 

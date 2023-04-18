@@ -2,6 +2,8 @@ package com.example.moviestmdb.ui_movies.lobby
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.moviestmdb.MovieResponse
+import com.example.moviestmdb.core.data.movies.MoviesRepository
 import com.example.moviestmdb.core.extensions.combine
 import com.example.moviestmdb.core.util.AppCoroutineDispatchers
 import com.example.moviestmdb.core.util.ObservableLoadingCounter
@@ -24,6 +26,7 @@ class MovieLobbyViewModel @Inject constructor(
     private val updateNowPlayingMovies: UpdateNowPlayingMovies,
     private val updateTopRatedMovies: UpdateTopRatedMovies,
     private val updateGeneres: UpdateGeneres,
+    private val moviesRepository: MoviesRepository,
     observePopularMovies: ObservePopularMovies,
     observeUpcomingMovies: ObserveUpcomingMovies,
     observeNowPlayingMovies: ObserveNowPlayingMovies,
@@ -114,6 +117,17 @@ class MovieLobbyViewModel @Inject constructor(
             updateGeneres(Unit).collect {
                 Timber.i("### Genere: $it")
             }
+        }
+
+        val results = mutableListOf<Result<MovieResponse>>()
+
+        viewModelScope.launch {
+            val popular = moviesRepository.getPopularMovies(page= 1)
+            val nowPlaying = moviesRepository.getPopularMovies(page= 1)
+            val upcoming = moviesRepository.getPopularMovies(page= 1)
+            val trending = moviesRepository.getPopularMovies(page= 1)
+
+            listOf(popular, nowPlaying, upcoming,trending)
         }
     }
 

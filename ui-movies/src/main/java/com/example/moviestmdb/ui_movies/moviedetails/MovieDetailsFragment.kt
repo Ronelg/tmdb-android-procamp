@@ -77,6 +77,7 @@ class MovieDetailsFragment : Fragment() {
                 binding.voteAvrage.text = "${(movie.voteAverage * 10).toInt()}%"
                 binding.voteCount.text = "${movie.voteCount / 1000}K votes"
 
+                binding.toolbar.title = movie.title
 //                binding.status.text = movie.status
 //                binding.badget.text = movie.budget.toString()
 //                binding.revenue.text = movie.revenue.toString()

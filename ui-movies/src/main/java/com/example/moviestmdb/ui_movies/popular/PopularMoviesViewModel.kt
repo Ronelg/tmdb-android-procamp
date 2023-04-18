@@ -94,8 +94,8 @@ class PopularMoviesViewModel @Inject constructor(
 
     companion object {
         val PAGING_CONFIG = PagingConfig(
-            pageSize = 20,
-            initialLoadSize = 60,
+            pageSize = 100,
+            initialLoadSize = 160,
         )
     }
 }

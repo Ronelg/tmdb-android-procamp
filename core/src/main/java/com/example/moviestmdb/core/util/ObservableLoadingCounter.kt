@@ -8,6 +8,7 @@ import kotlinx.coroutines.flow.*
 import timber.log.Timber
 import java.util.concurrent.atomic.AtomicInteger
 import  com.example.moviestmdb.core.result.*
+import kotlinx.coroutines.delay
 
 class ObservableLoadingCounter {
     private val count = AtomicInteger()
